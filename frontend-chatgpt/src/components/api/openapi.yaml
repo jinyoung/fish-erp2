@@ -1,240 +1,157 @@
 ---
 openapi: 3.0.2
 paths:
-  /accounts:
-    summary: Global operations on accounts
-    get:
-      tags:
-        - accounts
-      responses:
-        '200':
+  '':
+    accounts:
+      summary: Global operations on accounts
+      get:
+        tags:
+          - accounts
+        responses:
+          '200':
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Account'
+                examples:
+                  accounts_json:
+                    value:
+                      - accountName: A string
+                        representative: A string
+                        businessRegistrationNumber: A string
+                        address: value
+                        industry: A string
+                        category: A string
+                        customerType: A string
+            description: Get list of accounts
+        operationId: GetAccount
+        summary: Get list of accounts
+      post:
+        requestBody:
           content:
-            application/json:
-              schema:
-                type: array
-                items:
+            application:
+              json:
+                schema:
                   $ref: '#/components/schemas/Account'
-              examples:
-                accounts_json:
-                  value:
-                    - accountName: A string
+                examples:
+                  '1':
+                    value:
+                      accountName: A string
                       representative: A string
                       businessRegistrationNumber: A string
                       address: value
                       industry: A string
                       category: A string
                       customerType: A string
-          description: Get list of accounts
-      operationId: GetAccount
-      summary: Get list of accounts
-    post:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Account'
-            examples:
-              '1':
-                value:
-                  accountName: A string
-                  representative: A string
-                  businessRegistrationNumber: A string
-                  address: value
-                  industry: A string
-                  category: A string
-                  customerType: A string
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Account'
-              examples:
-                '1':
-                  value:
-                    accountName: A string
-                    representative: A string
-                    businessRegistrationNumber: A string
-                    address: value
-                    industry: A string
-                    category: A string
-                    customerType: A string
-          description: Changed Account
-      operationId: Post Account
-      summary: Post Account
-  '/accounts/{id}':
-    summary: Specific operation on accounts
-    get:
-      parameters:
-        - examples:
-            A string:
-              value: A string
-          name: id
-          description: Account name
-          schema:
-            type: string
-          in: path
           required: true
-      responses:
-        '200':
-          content:
-            application/json:
+        responses:
+          '200':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Account'
+                examples:
+                  '1':
+                    value:
+                      accountName: A string
+                      representative: A string
+                      businessRegistrationNumber: A string
+                      address: value
+                      industry: A string
+                      category: A string
+                      customerType: A string
+            description: Changed Account
+        operationId: Post Account
+        summary: Post Account
+      '{id}':
+        summary: Specific operation on accounts
+        get:
+          parameters:
+            - examples:
+                A string:
+                  value: A string
+              name: id
+              description: Account name
               schema:
-                $ref: '#/components/schemas/Account'
-              examples:
+                type: string
+              in: path
+              required: true
+          responses:
+            '200':
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Account'
+                  examples:
+                    '1':
+                      value:
+                        accountName: A string
+                        representative: A string
+                        businessRegistrationNumber: A string
+                        address: value
+                        industry: A string
+                        category: A string
+                        customerType: A string
+              description: accounts with specified id
+          operationId: GetAccountById
+          summary: Get Account by id
+          description: Get Account by id
+        patch:
+          requestBody:
+            content:
+              application:
+                json:
+                  schema:
+                    $ref: '#/components/schemas/Account'
+                  examples:
+                    '1':
+                      value:
+                        accountName: A string
+                        representative: A string
+                        businessRegistrationNumber: A string
+                        address: value
+                        industry: A string
+                        category: A string
+                        customerType: A string
+            required: true
+          parameters:
+            - examples:
                 '1':
-                  value:
-                    accountName: A string
-                    representative: A string
-                    businessRegistrationNumber: A string
-                    address: value
-                    industry: A string
-                    category: A string
-                    customerType: A string
-          description: accounts with specified id
-      operationId: GetAccountById
-      summary: Get Account by id
-      description: Get Account by id
-    patch:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Account'
-            examples:
-              '1':
-                value:
-                  accountName: A string
-                  representative: A string
-                  businessRegistrationNumber: A string
-                  address: value
-                  industry: A string
-                  category: A string
-                  customerType: A string
-        required: true
-      parameters:
-        - examples:
-            '1':
-              value: 1
-          name: accountName
-          description: Account name
-          schema:
-            type: string
-          in: path
-          required: true
-      responses:
-        '200':
-          content:
-            application/json:
+                  value: 1
+              name: accountName
+              description: Account name
               schema:
-                $ref: '#/components/schemas/Account'
-              examples:
-                '1':
-                  value:
-                    accountName: A string
-                    representative: A string
-                    businessRegistrationNumber: A string
-                    address: value
-                    industry: A string
-                    category: A string
-                    customerType: A string
-          description: Changed Account
-      operationId: PatchAccount
-      summary: Patch existing Account
-    parameters:
-      - name: id
-        description: Account id
-        schema:
-          type: string
-        in: path
-        required: true
-  '/purchases/{id}/sale':
-    summary: sale operation on purchases
-    put:
-      requestBody:
-        content:
-          application/json:
+                type: string
+              in: path
+              required: true
+          responses:
+            '200':
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Account'
+                  examples:
+                    '1':
+                      value:
+                        accountName: A string
+                        representative: A string
+                        businessRegistrationNumber: A string
+                        address: value
+                        industry: A string
+                        category: A string
+                        customerType: A string
+              description: Changed Account
+          operationId: PatchAccount
+          summary: Patch existing Account
+        parameters:
+          - name: id
+            description: Account id
             schema:
-              type: object
-              properties:
-                itemId:
-                  description: itemId of this Sale
-                  type: string
-                qty:
-                  description: qty of this Sale
-                  type: integer
-            examples:
-              Example 0:
-                value:
-                  itemId: N/A
-                  qty: N/A
-      parameters:
-        - name: id
-          description: Sale name
-          schema:
-            type: integer
-          in: path
-          required: true
-          examples:
-            Example 0:
-              value: null
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Purchase'
-              examples:
-                Example 0:
-                  value:
-                    itemId: N/A
-                    stock: N/A
-          description: Sale Operation
-      operationId: Sale
-      summary: Sale
-      description: Sale
-  '/purchases/{id}/':
-    summary: CreatePurchase operation on purchases
-    post:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties: null
-            examples: null
-      parameters:
-        - name: id
-          description: CreatePurchase name
-          schema:
-            type: integer
-          in: path
-          required: true
-          examples: null
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Purchase'
-              examples:
-                '1':
-                  value:
-                    purchaseNo: 1
-                    purchaseType: A string
-                    purchaseDate: value
-                    warehouseArrivalDate: value
-                    storageFeePaymentDate: value
-                    storageFeePaymentStatus: value
-                    mainShipName: A string
-                    productName: A string
-                    accountId: value
-                    purchaseDetails: value
-          description: CreatePurchase Operation
-      operationId: CreatePurchase
-      summary: CreatePurchase
-      description: CreatePurchase
+              type: string
+            in: path
+            required: true
 components:
   schemas:
     Account:
@@ -284,10 +201,6 @@ info:
   license:
     name: MIT License
     url: 'https://opensource.org/licenses/MIT'
----
-tags:
-  - name: Purchase
-    description: Purchase resource
 ---
 tags:
   - name: Purchase
