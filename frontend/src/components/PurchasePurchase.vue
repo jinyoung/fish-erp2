@@ -25,7 +25,6 @@
             <String label="본선명" v-model="value.mainShipName" :editMode="editMode" :inputUI="'TEXT'"/>
             <String label="품명" v-model="value.productName" :editMode="editMode" :inputUI="'TEXT'"/>
             <AccountId offline label="매입처" v-model="value.accountId" :editMode="editMode" @change="change"/>
-            <List&lt;PurchaseDetail&gt; offline label="PurchaseDetails" v-model="value.purchaseDetails" :editMode="editMode" @change="change"/>
             <PurchaseDetailManager offline label="PurchaseDetails" v-model="value.purchaseDetails" :editMode="editMode" @change="change"/>
         </v-card-text>
 
@@ -241,25 +240,6 @@
             },
             closeSale() {
                 this.saleDiagram = false;
-            },
-            async () {
-                try {
-                    if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links[''].href))
-                        for(var k in temp.data) {
-                            this.value[k]=temp.data[k];
-                        }
-                    }
-
-                    this.editMode = false;
-                } catch(e) {
-                    this.snackbar.status = true
-                    if(e.response && e.response.data.message) {
-                        this.snackbar.text = e.response.data.message
-                    } else {
-                        this.snackbar.text = e
-                    }
-                }
             },
         },
     }

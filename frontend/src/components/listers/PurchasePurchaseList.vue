@@ -132,9 +132,9 @@
             this.newValue = {
                 'purchaseNo': 0,
                 'purchaseType': '',
-                'purchaseDate': '2023-11-07',
-                'warehouseArrivalDate': '2023-11-07',
-                'storageFeePaymentDate': '2023-11-07',
+                'purchaseDate': '2023-11-22',
+                'warehouseArrivalDate': '2023-11-22',
+                'storageFeePaymentDate': '2023-11-22',
                 'storageFeePaymentStatus': false,
                 'mainShipName': '',
                 'productName': '',

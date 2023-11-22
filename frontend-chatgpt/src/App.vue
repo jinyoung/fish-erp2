@@ -11,7 +11,7 @@
                     </v-app-bar-nav-icon>
                     <span class="second-word font uppercase contrast-primary-text"
                         style="font-weight:700;"
-                    >fish-erp
+                    >fisherp
                     </span>
                 </v-toolbar-title>
                 <span v-if="urlPath!=null" 
@@ -68,7 +68,7 @@
             <v-container v-if="urlPath" style="max-width:100vw !important;" class="py-8 px-6 mt-10" fluid>
                 <router-view></router-view>
             </v-container>
-            <v-container v-else class="py-8 px-6 mt-10" fluid>
+            <v-container v-else fluid>
                 <v-row>
                     <chat></chat>
                 </v-row>
@@ -82,6 +82,9 @@ import Chat from './components/ui/Chat.vue'
 
 export default {
     name: "App",
+    components: {
+        Chat
+    },
     data: () => ({
         useComponent: "",
         drawer: true,
